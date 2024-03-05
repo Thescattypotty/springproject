@@ -1,19 +1,23 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import { listEmployee } from '../../Services/EmployeeService';
 
+export default function ListEmployee() {
+    
+    const [employees, setEmployees] =  useState([])
 
-export default function ListEmployeeComponent() {
-    const data = [
-        {
-            "id": 3,
-            "firstName": "Test",
-            "lastName": "test"
-        }
-    ]
+    useEffect(() => {
+        listEmployee().then(( response ) => {
+            setEmployees(response.data);
+        }).catch(error => {
+            console.error(error)
+        })
+    },[]
+    )
 
     return (
         <div className="container mt-4">
             <h2>List of Employees</h2>
-            <table class="table">
+            <table className="table">
                 <thead>
                     <tr>
                         <th scope="col">#ID</th>
@@ -23,7 +27,7 @@ export default function ListEmployeeComponent() {
                 </thead>
                 <tbody>
                     {
-                        data.map(employee =>
+                        employees.map(employee =>
                             <tr key={employee.id}>
                                 <th scope="row">{employee.id}</th>
                                 <td>{employee.firstName}</td>
