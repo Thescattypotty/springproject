@@ -51,7 +51,7 @@ public class EmployeeService implements IEmployeeService
                 .orElseThrow(() -> new ResourceNotFoundException("Employee Does not exist !"));
 
         employee.setFirstName(updatedEmployeeDto.getFirstName());
-        employee.setLastName(updatedEmployeeDto.getFirstName());
+        employee.setLastName(updatedEmployeeDto.getLastName());
 
         Employee updatedEmployee = employeeRepository.save(employee);
 

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { listEmployee } from '../../Services/EmployeeService';
 import { useNavigate } from 'react-router-dom';
+
 export default function ListEmployee() {
     
     const [employees, setEmployees] =  useState([])
@@ -19,6 +20,10 @@ export default function ListEmployee() {
     {
         navigator('/add-employee')
     }
+    function updateEmployee(id)
+    {
+        navigator(`/edit-employee/${id}`)
+    }
 
     return (
         <div className="container mt-4">
@@ -30,6 +35,7 @@ export default function ListEmployee() {
                         <th scope="col">#ID</th>
                         <th scope="col">FirstName</th>
                         <th scope="col">LastName</th>
+                        <th scope='col'>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +45,9 @@ export default function ListEmployee() {
                                 <th scope="row">{employee.id}</th>
                                 <td>{employee.firstName}</td>
                                 <td>{employee.lastName}</td>
+                                <td>
+                                    <button className='btn btn-info' onClick={() => updateEmployee(employee.id)}>Update</button>
+                                </td>
                             </tr>
                         )
                     }
