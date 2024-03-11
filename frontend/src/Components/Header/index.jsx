@@ -18,7 +18,7 @@ export default function Header() {
                                 <a className="nav-link" href="/employees">employees</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">Pricing</a>
+                                <a className="nav-link" href="/products">Products</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link disabled" aria-disabled="true">Disabled</a>
